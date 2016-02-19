@@ -15,9 +15,88 @@
         activate();
 
         function activate() {
-            vm.storage = $localStorage.$default({
-                events: []
-            });
+            /*vm.storage = $localStorage.$default({
+             events: []
+             });*/
+            vm.storage = {
+                events: [
+                    {
+                        name: 'Welcome time',
+                        startDate: '2/19/16 9:30 PM',
+                        endDate: '2/20/16 0:00 AM'
+                    },
+                    {
+                        name: 'Sprint 1',
+                        startDate: '2/20/16 0:00 AM',
+                        endDate: '2/20/16 0:45 AM'
+                    },
+                    {
+                        name: 'Coffee Break',
+                        startDate: '2/20/16 0:45 AM',
+                        endDate: '2/20/16 1:00 AM'
+                    },
+                    {
+                        name: 'Sprint 2',
+                        startDate: '2/20/16 1:00 AM',
+                        endDate: '2/20/16 1:45 AM'
+                    },
+                    {
+                        name: 'Coffee Break',
+                        startDate: '2/20/16 1:45 AM',
+                        endDate: '2/20/16 2:00 AM'
+                    },
+                    {
+                        name: 'Sprint 3',
+                        startDate: '2/20/16 2:00 AM',
+                        endDate: '2/20/16 2:45 AM'
+                    },
+                    {
+                        name: 'Almoço',
+                        startDate: '2/20/16 2:45 AM',
+                        endDate: '2/20/16 3:30 AM'
+                    },
+                    {
+                        name: 'Sprint 4',
+                        startDate: '2/20/16 3:30 AM',
+                        endDate: '2/20/16 4:15 AM'
+                    },
+                    {
+                        name: 'Coffee Break',
+                        startDate: '2/20/16 4:15 AM',
+                        endDate: '2/20/16 4:30 AM'
+                    },
+                    {
+                        name: 'Sprint 5',
+                        startDate: '2/20/16 4:30 AM',
+                        endDate: '2/20/16 5:15 AM'
+                    },
+                    {
+                        name: 'Coffee Break',
+                        startDate: '2/20/16 5:15 AM',
+                        endDate: '2/20/16 5:30 AM'
+                    },
+                    {
+                        name: 'Sprint 6',
+                        startDate: '2/20/16 5:30 AM',
+                        endDate: '2/20/16 6:15 AM'
+                    },
+                    {
+                        name: 'Coffee Break',
+                        startDate: '2/20/16 6:15 AM',
+                        endDate: '2/20/16 6:30 AM'
+                    },
+                    {
+                        name: 'Goodbye Meeting',
+                        startDate: '2/20/16 6:30 AM',
+                        endDate: '2/20/16 7:00 AM'
+                    },
+                    {
+                        name: 'It was a pleasure',
+                        startDate: '2/20/16 6:30 AM',
+                        endDate: '2/20/16 7:00 AM'
+                    }
+                ]
+            };
 
             angular.forEach(vm.storage.events, function (event) {
                 event.startDate = new Date(event.startDate);
@@ -53,15 +132,15 @@
             }
 
             var t = Date.parse(vm.currentEvent.endDate) - Date.parse(now);
-            var seconds = Math.floor( (t/1000) % 60 );
-            var minutes = Math.floor( (t/1000/60) % 60 );
-            var hours = Math.floor( (t/(1000*60*60)) % 24 );
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
             //var days = Math.floor( t/(1000*60*60*24) );
 
             vm.currentEvent.remaining = {
-                'hours': ((hours < 10)?'0' + hours:hours),
-                'minutes': ((minutes < 10)?'0' + minutes:minutes),
-                'seconds': ((seconds < 10)?'0' + seconds:seconds)
+                'hours': ((hours < 10) ? '0' + hours : hours),
+                'minutes': ((minutes < 10) ? '0' + minutes : minutes),
+                'seconds': ((seconds < 10) ? '0' + seconds : seconds)
             };
         }
 
